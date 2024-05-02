@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Display</title>
+</head>
+<body>
+    <h1>Experiment Data Analysis</h1>
+    {% if data %}
+        <ul>
+            {% for item in data %}
+                <li>{{ item.name }} - {{ item.observation_type }}: Average Value = {{ item.avg_value|floatformat:2 }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No data available.</p>
+    {% endif %}
+</body>
+</html>
