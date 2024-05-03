@@ -89,7 +89,7 @@
 </body>
 </html> -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -107,7 +107,7 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Data will be loaded dynamically here -->
+
         </tbody>
     </table>
     
@@ -129,4 +129,55 @@
         });
     </script>
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Display</title>
+    <!-- Add DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <style>
+        /* Add custom styles if needed */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Experiment Data Analysis</h1>
+        <table id="experimentTable">
+            <thead>
+                <tr>
+                    <th>Experiment Name</th>
+                    <th>Date</th>
+                    <th>Observation Type</th>
+                    <th>Average Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.observation_type }}</td>
+                    <td>{{ item.avg_value|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Add DataTables JavaScript -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script>
+        // Initialize DataTable
+        $(document).ready( function () {
+            $('#experimentTable').DataTable();
+        });
+    </script>
+</body>
 </html>
+
