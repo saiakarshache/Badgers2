@@ -21,5 +21,6 @@ def upload_csv(request):
     return render(request, 'experiment_data_processor/upload_csv.html')
 
 def display_data(request):
-    data = Experiment.objects.values('name', 'observation_type').annotate(avg_value=Avg('value')).order_by('name', 'observation_type')
+    data = Experiment.objects.values('name', 'date', 'observation_type').annotate(avg_value=Avg('value')).order_by('name', 'date', 'observation_type')
     return render(request, 'experiment_data_processor/display_data.html', {'data': data})
+
